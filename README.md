@@ -4,6 +4,6 @@ I am building this project to learn about react-router and server sid rendering.
 
 This is a PWA with declarative routing using react router that supports SSR so it is loaded from te server instead of the browser.
 
-Declarative routing
-Server-side rendering
-SEO in React with React Helmet
+- Declarative routing
+- Server-side rendering
+- SEO in React with React Helmet
