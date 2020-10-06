@@ -11,9 +11,13 @@ const HeaderWrapper = styled.div`
   color: white;
 `;
 
+const Title = styled.div`
+  pointer-events: none;
+`;
+
 const Header = () => (
   <HeaderWrapper>
-    <h1> Welcome to your feed </h1>
+    <Title> Welcome to the Q&A feed </Title>
   </HeaderWrapper>
 );
 
