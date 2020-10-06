@@ -10,6 +10,10 @@ const FeedWrapper = styled.div`
   margin: 5%;
 `;
 
+const Alert = styled.div`
+  text-align: center;
+`;
+
 class Feed extends Component {
   render() {
     return (
