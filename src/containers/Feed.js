@@ -17,6 +17,14 @@ const Alert = styled.div`
 const ROOT_API = "https://api.stackexchange.com/2.2/";
 
 class Feed extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+      loading: true,
+      error: "",
+    };
+  }
   render() {
     return (
       <FeedWrapper>
