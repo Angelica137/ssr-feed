@@ -25,10 +25,37 @@ class Feed extends Component {
       error: "",
     };
   }
+
+  async componentDidMount() {
+    try {
+      const data = await fetch(
+        `${ROOT_API}questions?order=desc&sort=activity&tagged=reactjs&site=stackoverflow`
+      );
+      const dataJSON = await data.json();
+
+      if (dataJSON) {
+        this.setState({
+          data: dataJSON,
+          loading: false,
+        });
+      }
+    } catch (error) {
+      this.setState({
+        loading: false,
+        error: error.message,
+      });
+    }
+  }
   render() {
+    const { data, loading, error } = this.state;
+    if (loading || error) {
+      return <Alert>{loading ? "Loading..." : error}</Alert>;
+    }
     return (
       <FeedWrapper>
-        <Card />
+        {data.items.map((item) => (
+          <Card key={item.question_id} data={item} />
+        ))}
       </FeedWrapper>
     );
   }
