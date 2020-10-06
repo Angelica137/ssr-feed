@@ -25,3 +25,5 @@ const Owner = ({ data }) => (
     <Name>{data.display_name}</Name>
   </OwnerWrapper>
 );
+
+export default Owner;
