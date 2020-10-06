@@ -9,9 +9,16 @@ const CardWrapper = styled.div`
   margin-bottom: 2px;
 `;
 
+const Title = styled.h2`
+  width: 100%;
+  padding-bottom: 10px;
+  text-align: center;
+  text-color: #303545;
+  border-bottom: 1px solid #303545;
+`;
 const Card = () => (
   <CardWrapper>
-    <h2>this is a card</h2>
+    <Title>this is a card</Title>
   </CardWrapper>
 );
 
