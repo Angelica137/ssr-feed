@@ -13,7 +13,7 @@ const HeaderWrapper = styled.div`
   padding: 8px;
 `;
 
-const Title = styled.div`
+const Title = styled.h1`
   pointer-events: none;
 `;
 

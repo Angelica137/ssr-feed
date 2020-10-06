@@ -4,23 +4,24 @@ import Owner from "../Owner/Owner";
 
 const CardWrapper = styled.div`
   text-align: left;
-  padding: 8px;
-  background: lightGray;
-  border-radius: 4px;
-  margin-bottom: 16px;
+  padding: 1%;
+  background: #f6f7fb;
+  border-radius: 5px;
+  margin-bottom: 2%;
 `;
 
 const Title = styled.h2`
   width: 100%;
-  padding: 8px;
+  padding-bottom: 10px;
   text-align: left;
-  text-color: #303545;
+  color: #303545;
   border-bottom: 1px solid #303545;
 `;
 
 const Meta = styled.div`
   display: flex;
   align-items: center;
+  color: #303545;
   justify-content: space-between;
   margin: 0 2%;
 `;

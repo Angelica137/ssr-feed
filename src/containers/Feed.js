@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Card from "../components/Card/Card";
 
 const FeedWrapper = styled.div`
-  background-color: #f6f7fb;
+  background-color: white;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
