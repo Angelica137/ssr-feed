@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import Header from "../components/Header/Header";
+import Feed from "./Feed";
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -23,6 +24,7 @@ class App extends Component {
         <GlobalStyle />
         <AppWrapper>
           <Header />
+          <Feed />
         </AppWrapper>
       </>
     );
