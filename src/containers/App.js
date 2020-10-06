@@ -11,6 +11,10 @@ body {
 }
 `;
 
+const AppWrapper = styled.div`
+  text-align: center;
+`;
+
 function App() {
   return (
     <>
