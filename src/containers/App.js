@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -15,27 +15,31 @@ const AppWrapper = styled.div`
   text-align: center;
 `;
 
-function App() {
-  return (
-    <>
-      <GlobalStyle />
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    </>
-  );
+class App extends Component {
+  render() {
+    return (
+      <>
+        <GlobalStyle />
+        <AppWrapper>
+          <div className="App">
+            <header className="App-header">
+              <p>
+                Edit <code>src/App.js</code> and save to reload.
+              </p>
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn React
+              </a>
+            </header>
+          </div>
+        </AppWrapper>
+      </>
+    );
+  }
 }
 
 export default App;
