@@ -6,9 +6,11 @@ const HeaderWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  alaign-items: center;
-  justify-size: calc(10px + 2vmin);
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
   color: white;
+  padding: 8px;
 `;
 
 const Title = styled.div`
