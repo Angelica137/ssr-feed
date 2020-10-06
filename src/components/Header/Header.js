@@ -19,7 +19,7 @@ const Title = styled.h1`
 
 const Header = () => (
   <HeaderWrapper>
-    <Title> Welcome to the Q&A feed </Title>
+    <Title> Welcome to Q&A</Title>
   </HeaderWrapper>
 );
 
