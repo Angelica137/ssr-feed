@@ -4,16 +4,16 @@ import Owner from "../Owner/Owner";
 
 const CardWrapper = styled.div`
   text-align: left;
-  padding: 1%;
+  padding: 8px;
   background: lightGray;
-  border-radius: 5px;
-  margin-bottom: 2px;
+  border-radius: 4px;
+  margin-bottom: 16px;
 `;
 
 const Title = styled.h2`
   width: 100%;
-  padding-bottom: 10px;
-  text-align: center;
+  padding: 8px;
+  text-align: left;
   text-color: #303545;
   border-bottom: 1px solid #303545;
 `;
@@ -31,7 +31,7 @@ const Count = styled.div`
 
 const Card = ({ data }) => (
   <CardWrapper>
-    <Title>this is a card</Title>
+    <Title>{data.title}</Title>
     <Meta>
       <Count>
         {`Views: ${data.view_count} | Answers: ${data.answer_count}`}
