@@ -14,6 +14,8 @@ const Alert = styled.div`
   text-align: center;
 `;
 
+const ROOT_API = "https://api.stackexchange.com/2.2/";
+
 class Feed extends Component {
   render() {
     return (
