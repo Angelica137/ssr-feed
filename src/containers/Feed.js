@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link, StaticRouter } from "react-router-dom";
 import Card from "../components/Card/Card";
 
 const FeedWrapper = styled.div`
@@ -54,7 +55,11 @@ class Feed extends Component {
     return (
       <FeedWrapper>
         {data.items.map((item) => (
-          <Card key={item.question_id} data={item} />
+          <StaticRouter basename="/questions">
+            <Link key={item.question_id} to={`/questions/${item.question_id}`}>
+              <Card data={item} />
+            </Link>
+          </StaticRouter>
         ))}
       </FeedWrapper>
     );
