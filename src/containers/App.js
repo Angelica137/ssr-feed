@@ -27,6 +27,9 @@ class App extends Component {
         <GlobalStyle />
         <AppWrapper>
           <Header />
+          <Router>
+            <Route path="/" component={Feed} />
+          </Router>
           <Feed />
         </AppWrapper>
       </>
