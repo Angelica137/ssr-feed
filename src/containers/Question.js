@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "styled-components";
+import styled from "styled-components";
 
 const QuestionWrapper = styled.div`
   display: flex;
