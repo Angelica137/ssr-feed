@@ -28,6 +28,7 @@ class Question extends Component {
     if (loading || error) {
       return <Alert>{loading ? "Loading..." : error}</Alert>;
     }
+
     return <QuestionWrapper></QuestionWrapper>;
   }
 }
