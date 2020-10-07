@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link, StaticRouter } from "react-router-dom";
 import Card from "../components/Card/Card";
 
-const FeedWrapper = styled.div`
-  background-color: white;
+const QuestionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -15,15 +13,10 @@ const Alert = styled.div`
   text-align: center;
 `;
 
-const CardLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
-`;
-
 const ROOT_API = "https://api.stackexchange.com/2.2/";
 
-class Feed extends Component {
-  constructor() {
+class Question extends Component {
+  constructor(props) {
     super();
     this.state = {
       data: [],
@@ -33,9 +26,10 @@ class Feed extends Component {
   }
 
   async componentDidMount() {
+    const { match } = this.props;
     try {
       const data = await fetch(
-        `${ROOT_API}questions?order=desc&sort=activity&tagged=reactjs&site=stackoverflow`
+        `${ROOT_API}questions/${match.params.id}?site=stackoverflow`
       );
       const dataJSON = await data.json();
 
@@ -47,31 +41,24 @@ class Feed extends Component {
       }
     } catch (error) {
       this.setState({
-        loading: false,
+        loading: true,
         error: error.message,
       });
     }
   }
   render() {
     const { data, loading, error } = this.state;
+
     if (loading || error) {
       return <Alert>{loading ? "Loading..." : error}</Alert>;
     }
+
     return (
-      <FeedWrapper>
-        {data.items.map((item) => (
-          <StaticRouter basename="/questions">
-            <CardLink
-              key={item.question_id}
-              to={`/questions/${item.question_id}`}
-            >
-              <Card data={item} />
-            </CardLink>
-          </StaticRouter>
-        ))}
-      </FeedWrapper>
+      <QuestionWrapper>
+        <Card key={data.items[0].question_id} data={data.items[0]} />
+      </QuestionWrapper>
     );
   }
 }
 
-export default Feed;
+export default Question;
