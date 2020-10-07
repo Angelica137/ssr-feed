@@ -15,6 +15,11 @@ const Alert = styled.div`
   text-align: center;
 `;
 
+const CardLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
 const ROOT_API = "https://api.stackexchange.com/2.2/";
 
 class Feed extends Component {
@@ -56,9 +61,12 @@ class Feed extends Component {
       <FeedWrapper>
         {data.items.map((item) => (
           <StaticRouter basename="/questions">
-            <Link key={item.question_id} to={`/questions/${item.question_id}`}>
+            <CardLink
+              key={item.question_id}
+              to={`/questions/${item.question_id}`}
+            >
               <Card data={item} />
-            </Link>
+            </CardLink>
           </StaticRouter>
         ))}
       </FeedWrapper>
