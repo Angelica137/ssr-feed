@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Card from "../components/Card/Card";
 
 const QuestionWrapper = styled.div`
   display: flex;
@@ -52,7 +53,11 @@ class Question extends Component {
       return <Alert>{loading ? "Loading..." : error}</Alert>;
     }
 
-    return <QuestionWrapper></QuestionWrapper>;
+    return (
+      <QuestionWrapper>
+        <Card key={data.items[0].question_id} data={data.items[0]} />
+      </QuestionWrapper>
+    );
   }
 }
 
