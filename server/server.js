@@ -25,3 +25,7 @@ app.get("/*", (req, res) => {
     return res.send(data);
   });
 });
+
+app.listen(PORT, () => {
+  console.log(`Sever-Side Rewndered application running on port ${PORT}`);
+});
