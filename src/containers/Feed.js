@@ -89,6 +89,10 @@ class Feed extends Component {
             </CardLink>
           </StaticRouter>
         ))}
+        <PaginationBar>
+          <PaginationLink>Previous</PaginationLink>
+          <PaginationLink>Next</PaginationLink>
+        </PaginationBar>
       </FeedWrapper>
     );
   }
