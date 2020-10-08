@@ -17,7 +17,7 @@ const ROOT_API = "https://api.stackexchange.com/2.2/";
 
 class Question extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       data: [],
       loading: true,
