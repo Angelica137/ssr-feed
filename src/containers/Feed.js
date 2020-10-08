@@ -71,6 +71,7 @@ class Feed extends Component {
       });
     }
   }
+
   componentDidMount() {
     const { page } = this.state;
     this.fetchAPI(page);
@@ -78,7 +79,7 @@ class Feed extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.location.search !== this.props.location.search) {
-      const query = queryString.parse(this.props.location.serach);
+      const query = queryString.parse(this.props.location.search);
       this.setState({ page: parseInt(query.page) }, () =>
         this.fetchAPI(this.state.page)
       );
@@ -88,9 +89,15 @@ class Feed extends Component {
   render() {
     const { data, page, loading, error } = this.state;
     const { match } = this.props;
+
     if (loading || error) {
-      return <Alert>{loading ? "Loading..." : error}</Alert>;
+      return (
+        <>
+          <Alert>{loading ? "Loading..." : error}</Alert>
+        </>
+      );
     }
+
     return (
       <FeedWrapper>
         {data.items.map((item) => (
