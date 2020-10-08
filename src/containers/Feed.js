@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import queryString from "query-string";
-import { Link, StaticRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Card from "../components/Card/Card";
 
 const FeedWrapper = styled.div`
@@ -49,8 +49,7 @@ class Feed extends Component {
     };
   }
 
-  async componentDidMount() {
-    const { page } = this.state;
+  async fetchAPI(page) {
     try {
       const data = await fetch(
         `${ROOT_API}questions?order=desc&sort=activity&tagged=reactjs&site=stackoverflow${
@@ -72,23 +71,42 @@ class Feed extends Component {
       });
     }
   }
+
+  componentDidMount() {
+    const { page } = this.state;
+    this.fetchAPI(page);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search !== this.props.location.search) {
+      const query = queryString.parse(this.props.location.search);
+      this.setState({ page: parseInt(query.page) }, () =>
+        this.fetchAPI(this.state.page)
+      );
+    }
+  }
+
   render() {
     const { data, page, loading, error } = this.state;
     const { match } = this.props;
+
     if (loading || error) {
-      return <Alert>{loading ? "Loading..." : error}</Alert>;
+      return (
+        <>
+          <Alert>{loading ? "Loading..." : error}</Alert>
+        </>
+      );
     }
+
     return (
       <FeedWrapper>
         {data.items.map((item) => (
-          <StaticRouter basename="/questions">
-            <CardLink
-              key={item.question_id}
-              to={`/questions/${item.question_id}`}
-            >
-              <Card data={item} />
-            </CardLink>
-          </StaticRouter>
+          <CardLink
+            key={item.question_id}
+            to={`/questions/${item.question_id}`}
+          >
+            <Card data={item} />
+          </CardLink>
         ))}
         <PaginationBar>
           {page > 1 && (
