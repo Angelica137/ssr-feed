@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import queryString from "query-string";
 import { Link, StaticRouter } from "react-router-dom";
 import Card from "../components/Card/Card";
 
@@ -23,10 +24,12 @@ const CardLink = styled(Link)`
 const ROOT_API = "https://api.stackexchange.com/2.2/";
 
 class Feed extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const query = queryString.parse(props.location.search);
     this.state = {
       data: [],
+      page: query.page ? parseInt(query.page) : 1,
       loading: true,
       error: "",
     };
