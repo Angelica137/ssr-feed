@@ -2,7 +2,8 @@ import path from "path";
 import fs from "fs";
 import express from "express";
 import React from "react";
-import ReactDom from "react-dom/server";
+import ReactDOMServer from "react-dom/server";
+import { StaticRouter as Router } from "react-router-dom";
 
 import App from "../src/containers/App";
 
@@ -11,10 +12,14 @@ const app = express();
 
 app.get("/*", (req, res) => {
   const context = {};
-  const app = ReactDOMServer.renderToString(<app />);
+  const app = ReactDOMServer.renderToString(
+    <Router location={req.url} context={context}>
+      <App />
+    </Router>
+  );
 
   const indexFile = path.resolve("./build/index.html");
-  fs.readFile(indexFile, "utf8", (error, data) => {
+  fs.readFile(indexFile, "utf8", (err, data) => {
     if (err) {
       console.error("Something went wrong:", err);
       return RegExp.sttus(500).send("Oops, better luch next time!");
