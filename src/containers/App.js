@@ -29,7 +29,7 @@ class App extends Component {
         <AppWrapper>
           <Header />
           <Router>
-            <Route path="/" component={Feed} />
+            <Route exact path="/" component={Feed} />
             <Route path="/questions" component={Feed} />
             <Route path="/questions/:id" component={Question} />
           </Router>
