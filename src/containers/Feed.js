@@ -49,8 +49,7 @@ class Feed extends Component {
     };
   }
 
-  async componentDidMount() {
-    const { page } = this.state;
+  async fetchAPI(page) {
     try {
       const data = await fetch(
         `${ROOT_API}questions?order=desc&sort=activity&tagged=reactjs&site=stackoverflow${
@@ -71,6 +70,10 @@ class Feed extends Component {
         error: error.message,
       });
     }
+  }
+  componentDidMount() {
+    const { page } = this.state;
+    this.fetchAPI(page);
   }
   render() {
     const { data, page, loading, error } = this.state;
