@@ -73,7 +73,8 @@ class Feed extends Component {
     }
   }
   render() {
-    const { data, loading, error } = this.state;
+    const { data, page, loading, error } = this.state;
+    const { match } = this.props;
     if (loading || error) {
       return <Alert>{loading ? "Loading..." : error}</Alert>;
     }
@@ -90,8 +91,16 @@ class Feed extends Component {
           </StaticRouter>
         ))}
         <PaginationBar>
-          <PaginationLink>Previous</PaginationLink>
-          <PaginationLink>Next</PaginationLink>
+          {page > 1 && (
+            <PaginationLink to={`${match.url}?page=${page - 1}`}>
+              Previous
+            </PaginationLink>
+          )}
+          {data.has_more && (
+            <PaginationLink to={`${match.url}?page=${page + 1}`}>
+              Next
+            </PaginationLink>
+          )}
         </PaginationBar>
       </FeedWrapper>
     );
