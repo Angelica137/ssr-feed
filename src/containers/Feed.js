@@ -22,7 +22,7 @@ const CardLink = styled(Link)`
 `;
 
 const PaginationBar = styled.div`
-  wudth: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 `;
