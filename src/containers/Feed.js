@@ -21,6 +21,12 @@ const CardLink = styled(Link)`
   color: inherit;
 `;
 
+const PaginationBar = styled.div`
+  wudth: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
 const ROOT_API = "https://api.stackexchange.com/2.2/";
 
 class Feed extends Component {
