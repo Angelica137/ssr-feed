@@ -30,6 +30,7 @@ class App extends Component {
           <Header />
           <Router>
             <Route path="/" component={Feed} />
+            <Route path="/questions" component={Feed} />
             <Route path="/questions/:id" component={Question} />
           </Router>
           <Feed />
