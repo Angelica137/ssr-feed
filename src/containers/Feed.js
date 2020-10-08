@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import queryString from "query-string";
-import { Link, StaticRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Card from "../components/Card/Card";
 
 const FeedWrapper = styled.div`
@@ -75,6 +75,16 @@ class Feed extends Component {
     const { page } = this.state;
     this.fetchAPI(page);
   }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search !== this.props.location.search) {
+      const query = queryString.parse(this.props.location.serach);
+      this.setState({ page: parseInt(query.page) }, () =>
+        this.fetchAPI(this.state.page)
+      );
+    }
+  }
+
   render() {
     const { data, page, loading, error } = this.state;
     const { match } = this.props;
@@ -84,14 +94,12 @@ class Feed extends Component {
     return (
       <FeedWrapper>
         {data.items.map((item) => (
-          <StaticRouter basename="/questions">
-            <CardLink
-              key={item.question_id}
-              to={`/questions/${item.question_id}`}
-            >
-              <Card data={item} />
-            </CardLink>
-          </StaticRouter>
+          <CardLink
+            key={item.question_id}
+            to={`/questions/${item.question_id}`}
+          >
+            <Card data={item} />
+          </CardLink>
         ))}
         <PaginationBar>
           {page > 1 && (
