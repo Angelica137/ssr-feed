@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import * as QueryString from "query-string";
+import queryString from "query-string";
 import { Link, StaticRouter } from "react-router-dom";
 import Card from "../components/Card/Card";
 
@@ -26,7 +26,7 @@ const ROOT_API = "https://api.stackexchange.com/2.2/";
 class Feed extends Component {
   constructor(props) {
     super(props);
-    const query = QueryString.parse(props.location.search);
+    const query = queryString.parse(this.props.location.search);
     this.state = {
       data: [],
       page: query.page ? parseInt(query.page) : 1,
@@ -39,7 +39,8 @@ class Feed extends Component {
     const { page } = this.state;
     try {
       const data = await fetch(
-        `${ROOT_API}questions?order=desc&sort=activity&tagged=reactjs&site=stackoverflow${page}?&${page}=${page} : ""
+        `${ROOT_API}questions?order=desc&sort=activity&tagged=reactjs&site=stackoverflow${
+          page ? `&page=${page}` : ""
         }`
       );
       const dataJSON = await data.json();
