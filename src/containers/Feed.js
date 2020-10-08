@@ -27,6 +27,14 @@ const PaginationBar = styled.div`
   justify-content: space-between;
 `;
 
+const PaginationLink = styled(Link)`
+  padding: 1%;
+  background: lightBlue;
+  color: white;
+  text-decoration: none;
+  border-ratdius: 5px;
+`;
+
 const ROOT_API = "https://api.stackexchange.com/2.2/";
 
 class Feed extends Component {
