@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import queryString from "query-string";
 import { Link } from "react-router-dom";
+import Helmet from "react-helmet";
 import Card from "../components/Card/Card";
 
 const FeedWrapper = styled.div`
@@ -93,6 +94,9 @@ class Feed extends Component {
     if (loading || error) {
       return (
         <>
+          <Helmet>
+            <title>Q&A Feed - Questions</title>
+          </Helmet>
           <Alert>{loading ? "Loading..." : error}</Alert>
         </>
       );
